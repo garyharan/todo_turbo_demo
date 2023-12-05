@@ -5,37 +5,25 @@ class ItemsTest < ApplicationSystemTestCase
     @item = items(:one)
   end
 
-  test "visiting the index" do
-    visit items_url
-    assert_selector "h1", text: "Items"
-  end
-
   test "should create item" do
     visit items_url
-    click_on "New item"
+    find("#item_body").set("This is a test item with return key")
+    find('#item_body').native.send_keys(:return)
 
-    fill_in "Body", with: @item.body
-    click_on "Create Item"
-
-    assert_text "Item was successfully created"
-    click_on "Back"
-  end
-
-  test "should update Item" do
-    visit item_url(@item)
-    click_on "Edit this item", match: :first
-
-    fill_in "Body", with: @item.body
-    click_on "Update Item"
-
-    assert_text "Item was successfully updated"
-    click_on "Back"
+    assert_text "This is a test item with return key"
   end
 
   test "should destroy Item" do
-    visit item_url(@item)
-    click_on "Destroy this item", match: :first
+    visit items_url
 
-    assert_text "Item was successfully destroyed"
+    find("#item_body").set("This is an item I will delete")
+    find('#item_body').native.send_keys(:return)
+
+    assert_text "This is an item I will delete"
+
+    within("#items") do
+      all('button').last.click
+    end
+    assert_no_text "This is an item I will delete"
   end
 end
