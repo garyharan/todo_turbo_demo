@@ -1,22 +1,5 @@
-<%= form_with(model: item, class: "contents") do |form| %>
-  <% if item.errors.any? %>
-    <div id="error_explanation" class="bg-red-50 text-red-500 px-3 py-2 font-medium rounded-lg mt-3">
-      <h2><%= pluralize(item.errors.count, "error") %> prohibited this item from being saved:</h2>
-
-      <ul>
-        <% item.errors.each do |error| %>
-          <li><%= error.full_message %></li>
-        <% end %>
-      </ul>
-    </div>
+<%= turbo_frame_tag 'new_item_form' do %>
+  <%= form_with(model: Item.new, data: { turbo_frame: 'new_item_form' }, class: "min-w-full") do |form| %>
+    <%= form.text_field :body, data: { controller: "resetable" }, class: "min-w-full rounded-lg bg-slate-100 border-1 border-white focus:outline-none !" %>
   <% end %>
-
-  <div class="my-5">
-    <%= form.label :body %>
-    <%= form.text_field :body, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
-  </div>
-
-  <div class="inline">
-    <%= form.submit class: "rounded-lg py-3 px-5 bg-blue-600 text-white inline-block font-medium cursor-pointer" %>
-  </div>
 <% end %>

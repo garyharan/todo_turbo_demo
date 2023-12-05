@@ -1,14 +1,14 @@
-<div class="w-full">
+<div class="min-w-[50%] mx-auto">
   <% if notice.present? %>
     <p class="py-2 px-3 bg-green-50 mb-5 text-green-500 font-medium rounded-lg inline-block" id="notice"><%= notice %></p>
   <% end %>
 
-  <div class="flex justify-between items-center">
-    <h1 class="font-bold text-4xl">Items</h1>
-    <%= link_to "New item", new_item_path, class: "rounded-lg py-3 px-5 bg-blue-600 text-white block font-medium" %>
+  <%= turbo_stream_from 'items' %>
+  <div id="items" class="border-1 rounded-t-md">
+    <%= render @items %>
   </div>
 
-  <div id="items" class="min-w-full">
-    <%= render @items %>
+  <div class="min-w-full rounded-b-md pt-2">
+    <%= render partial: 'items/form' %>
   </div>
 </div>
