@@ -20,7 +20,7 @@ class ItemsControllerTest < ActionDispatch::IntegrationTest
       post items_url, params: { item: { body: @item.body } }
     end
 
-    assert_redirected_to item_url(Item.last)
+    assert_redirected_to items_url
   end
 
   test "should show item" do
