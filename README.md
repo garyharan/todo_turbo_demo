@@ -1,24 +1,7 @@
-# README
+# A simple Todo app built with turbo streams
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Run as you normally would a rails app.  Check out the turbo streams by looking at `items_controller.rb` and `app/views/items/*.turbo_stream.erb`.  The turbo streams are rendered in the `app/views/items/index.html.erb` file.
 
-Things you may want to cover:
+## License
 
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+MIT
